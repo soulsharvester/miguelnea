@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9ece7">
+  <title>Boulderate | Find your next problem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main id="signup-view" class="signup-view">
+    <div class="signup-shade" aria-hidden="true"></div>
+    <section class="intro-copy" aria-label="Boulderate introduction">
+      <a class="brand-mark" href="#" aria-label="Boulderate home">B</a>
+      <p class="eyebrow">Climb outside with confidence</p>
+      <h1>Find your<br>next problem.</h1>
+      <p class="intro-description">Discover UK bouldering routes, prepare the right gear and keep track of every climb.</p>
+    </section>
+
+    <section class="signup-device" aria-label="Create a Boulderate account">
+      <div class="phone-notch" aria-hidden="true"></div>
+      <div class="signup-content">
+        <p class="wordmark">Boulderate</p>
+        <h2 id="auth-heading">Create New Account</h2>
+        <p class="auth-switch"><span id="auth-switch-copy">Already registered?</span> <button id="auth-toggle" type="button">Log in here.</button></p>
+        <form id="auth-form" novalidate>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="climber@example.com" autocomplete="email" required>
+          <div id="username-field">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" placeholder="Your name" autocomplete="name" required>
+          </div>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" required>
+          <p id="form-error" class="form-error" role="alert"></p>
+          <button class="primary-button auth-submit" type="submit" id="auth-submit">Sign up</button>
+        </form>
+        <p class="demo-note">Demo front end: any valid details will open the route finder.</p>
+      </div>
+      <div class="phone-home" aria-hidden="true"></div>
+    </section>
+    <button class="cookie-button" type="button" aria-label="Cookie preferences">Manage cookies or opt out</button>
+    <button class="help-button" type="button" aria-label="Help">?</button>
+  </main>
+
+  <main id="app-view" class="app-view" hidden>
+    <section class="app-device" aria-label="Boulderate route finder">
+      <div class="phone-notch" aria-hidden="true"></div>
+      <div class="app-screen">
+        <header class="discover-header screen-only" data-screen="discover">
+          <label class="route-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input id="quick-search" type="search" placeholder="Search routes" aria-label="Search routes"></label>
+          <button class="profile-button" type="button" aria-label="Profile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.3"></circle><path d="M5.8 20a6.2 6.2 0 0 1 12.4 0"></path></svg></button>
+        </header>
+
+        <section class="screen screen-only discover-screen" data-screen="discover">
+          <p class="eyebrow orange">Recommended for you</p>
+          <h1 class="screen-title">Your next route</h1>
+          <div id="featured-route"></div>
+          <div class="carousel-dots" aria-label="Featured route 1 of 3"><span class="active"></span><span></span><span></span></div>
+          <article class="conditions-panel">
+            <div class="conditions-overlay"></div>
+            <div class="conditions-copy"><p class="eyebrow">Plan your day</p><h2>Conditions look good</h2><p>Dry rock and light winds around the Peak District today.</p></div>
+          </article>
+        </section>
+
+        <section class="screen-only search-screen" data-screen="search" hidden>
+          <header class="page-heading"><h1>Search</h1><button class="back-button" type="button" data-go="discover" aria-label="Back to Discover"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></button></header>
+          <p class="screen-description">Choose a few details to find a climb that suits you.</p>
+          <form id="route-filter" class="filter-form">
+            <label for="type-filter">Type</label>
+            <select id="type-filter"><option value="">Any type</option><option>Boulder</option><option>Slab</option><option>Overhang</option></select>
+            <label for="grade-filter">Grade</label>
+            <select id="grade-filter"><option value="">Any grade</option><option>V0</option><option>V1</option><option>V2</option><option>V3</option><option>V4</option></select>
+            <label for="location-filter">Location</label>
+            <input id="location-filter" type="text" placeholder="e.g. Peak District">
+            <div class="filter-pair">
+              <div><label for="time-filter">Max time</label><select id="time-filter"><option value="">Any</option><option value="15">15 mins</option><option value="20">20 mins</option><option value="30">30 mins</option></select></div>
+              <div><label for="height-filter">Max height</label><select id="height-filter"><option value="">Any</option><option value="3">3 m</option><option value="3.5">3.5 m</option><option value="4">4 m</option></select></div>
+            </div>
+            <button class="primary-button" type="submit">Find routes</button>
+          </form>
+          <div id="search-results" class="search-results" aria-live="polite"></div>
+        </section>
+
+        <section class="screen-only completed-screen" data-screen="completed" hidden>
+          <header class="page-heading"><h1>Completed</h1><button class="back-button" type="button" data-go="discover" aria-label="Back to Discover"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></button></header>
+          <p class="screen-description completed-description">A record of your sends, ready for your Python back end to update.</p>
+          <div id="completed-list" class="completed-list"></div>
+          <p id="empty-completed" class="empty-state" hidden>No sends recorded yet. Complete a route from Discover to see it here.</p>
+        </section>
+      </div>
+      <nav class="tab-bar" aria-label="Main navigation">
+        <button class="tab-button active" type="button" data-tab="discover">Discover</button>
+        <button class="tab-button" type="button" data-tab="search">Search</button>
+        <button class="tab-button" type="button" data-tab="completed">Completed</button>
+      </nav>
+      <div class="phone-home" aria-hidden="true"></div>
+    </section>
+  </main>
+</body>
+</html>
