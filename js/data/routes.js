@@ -1,0 +1,5 @@
+export const routes = [
+  { id: "pebble", name: "The Pebble", type: "Boulder", grade: "V2", location: "Stanage, Peak District", rock: "Gritstone", time: 20, height: 3.5, gear: "Shoes, chalk, crash pad", image: "https://images.unsplash.com/photo-1767850815964-cf6423b9a5dc?auto=format&fit=crop&w=750&q=85", position: "center 43%" },
+  { id: "ramp", name: "The Ramp", type: "Slab", grade: "V1", location: "Burbage, Peak District", rock: "Gritstone", time: 15, height: 3.1, gear: "Shoes, chalk, crash pad", image: "https://images.unsplash.com/photo-1775146967130-732521beac22?auto=format&fit=crop&w=750&q=85", position: "70% center" },
+  { id: "overhang", name: "The Overhang", type: "Overhang", grade: "V3", location: "Curbar Edge, Peak District", rock: "Gritstone", time: 30, height: 4, gear: "Shoes, chalk, spotter", image: "https://images.unsplash.com/photo-1767850815964-cf6423b9a5dc?auto=format&fit=crop&w=750&q=85", position: "35% center" }
+];
